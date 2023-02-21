@@ -4,15 +4,6 @@ const cors = require("cors");
 require("dotenv").config();
 const Person = require("./models/person");
 
-let phonebook = [
-  { id: 1, name: "Arto Hellas", number: "040-123456" },
-  {
-    id: 2,
-    name: "Ada Lovelace",
-    number: "33-142-1346",
-  },
-];
-
 const app = express();
 
 const handleError = (error, request, response, next) => {
