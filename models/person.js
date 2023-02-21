@@ -13,8 +13,22 @@ mongoose
   });
 
 const henkiloSchema = new mongoose.Schema({
-  name: String,
-  number: String,
+  name: {
+    type: String,
+    minlength: 3,
+    required: true,
+  },
+  number: {
+    type: String,
+    validate: {
+      validator: (v) => {
+        if (v.length > 8) {
+          return /^\d{2,3}-\d{6,12}$/.test(v);
+        } else return false;
+      },
+      message: "Phonenumber not formatted correctly.",
+    },
+  },
 });
 
 henkiloSchema.set("toJSON", {
